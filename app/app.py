@@ -3,6 +3,7 @@
 from flask import Flask, make_response
 from flask_migrate import Migrate
 from flask_restx import Api, Resource, Namespace, fields
+from flasgger import Swagger
 
 from models import db, Hero, Power, HeroPower
 from exceptions import ObjectNotFoundException
@@ -10,6 +11,7 @@ from exceptions import ObjectNotFoundException
 ns = Namespace("/")
 
 app = Flask(__name__)
+swagger = Swagger(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
